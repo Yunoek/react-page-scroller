@@ -6,7 +6,6 @@ import React, {
   useMemo,
 } from "react";
 import PropTypes from "prop-types";
-
 import * as Events from "./Events";
 import { isNil, isNull, isPositiveNumber } from "./utils";
 import usePrevious from "./usePrevValue";
