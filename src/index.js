@@ -203,20 +203,17 @@ const ReactPageScroller = ({
     scrollPage,
   ]);
 
-  const touchMove = useCallback(
-    event => {
+  const touchMove = useCallback(function (event) {
       if (!isNull(previousTouchMove)) {
-        if (event.touches[0].clientY > previousTouchMove) {
-          scrollWindowUp();
-        } else {
-          scrollWindowDown();
-        }
+            if (event.touches[0].clientY > previousTouchMove+100) {
+                    scrollWindowUp();
+            } else if(event.touches[0].clientY+100 < previousTouchMove){
+                    scrollWindowDown();
+            }
       } else {
-        previousTouchMove = event.touches[0].clientY;
+            previousTouchMove = event.touches[0].clientY;
       }
-    },
-    [scrollWindowDown, scrollWindowUp],
-  );
+  }, [scrollWindowDown, scrollWindowUp]);
 
   const wheelScroll = useCallback(
     event => {
